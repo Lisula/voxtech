@@ -1,10 +1,6 @@
 // Define variables for colors, font-families, etc.
 @import '_partials';
 
-$bg-color: white;
-$font-family: Montserrat;
-$text-color: white;
-
 // Mixin for centering content
 @mixin center-content {
   position: absolute;
@@ -19,6 +15,19 @@ body, html {
   height: 100%;
   margin: 0;
   font-family: $font-family;
+}
+
+    /*Nesting - indsætter alle elementer som har direkte relation til øverste element af blokken*/
+    p{
+        font-size: 16px;
+        color: partials.$text-color;
+        line-height: 1.5;
+    }
+
+    h1, h2, h3, h4, h5, h6{
+        font-weight: 600;
+        color: partials.$text-color;
+    }
 }
 
 header {
@@ -48,6 +57,7 @@ header {
         right: 20px; // Adjust this value as needed for spacing from the right edge
         top: 20px; // Adjust this value as needed for spacing from the top
         cursor: pointer; // Optional: Changes the cursor on hover to indicate it's clickable
+        margin-right: 20px;
     }
     
 
@@ -56,8 +66,25 @@ header {
             display: block !important;
         }
     }
-
-  
+    .overlay {
+        .logo img {
+          width: 50%; // Example of a relative width
+          height: auto;
+        }
+      
+        // Optionally, you can use media queries for more control on different screen sizes
+        @media (max-width: 768px) {
+          .logo img {
+            width: 30%; // Smaller width on smaller screens
+          }
+        }
+      
+        .text {
+          color: white;
+        }
+      }
+    
+      
     .header-content {
       position: relative;
       z-index: 10;

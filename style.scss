@@ -1,57 +1,103 @@
 @use 'partials';
 
+
 // Basic styles
 body {
-  height: 100%;
-  margin: 0;
-  font-family: partials.$font-family;
+    margin: 0;
+    padding: 0;
+    font-family: partials.$font;
+    background-color: partials.$bg-color; // Define a fallback color if necessary
+    box-sizing: border-box; // Ensures padding and borders are included in the total width and height
+  }
+
+*,
+*::before,
+*::after {
+  box-sizing: inherit; // Inherit box-sizing from body
 }
 
+// Basic styles for p
 p {
-  font-size: 16px;
-  color: partials.$text-color;
-  line-height: 1.5;
-}
+    font-size: 16px;
+    color: partials.$text-color;
+    line-height: 1.5;
+    text-align: center;
+  }
+  
+  // Basic styles for heading elements
 
-h1, h2, h3, h4, h5, h6 {
-  font-weight: 600;
-  color: partials.$text-color;
-}
+  h1 {
+    font-size: 36px;
+    color: partials.$text-color;
+  }
+   h2 {
+    font-size: 24px;
+    color: partials.$text-color;
+    text-align: center;
+  }
 
-header {
-  grid-column: 1/6; // grid column start and end in one line instead of two
-  @include partials.flex($justify: space-between);
-  background-color: partials.$nav-color;
-  position: relative;
-  overflow: hidden; // Ensures the video doesn't overflow the header bounds
-  height: 100vh; // Set the desired height for your header
-  display: flex; // Use flexbox for positioning
-  flex-direction: column; // Stack children vertically
-  align-items: center; // Center-align children
-  padding: 1rem; // Header padding
+  h4, h5, h6 {
+    font-size: 24px;
+    color: partials.$text-color;
+  }
+  
+  // Specific style for h3 within the main section
+  h3{
+    font-weight: 22px;
+    color: partials.$secondary-color;
+    text-align: center;
+  }
+
+
+  header {
+    background-color: partials.$nav-color;
+    padding: 1rem;
+    position: fixed; // Fixed header stays at the top
+    width: 100%; // Full width
+    z-index: 5; // Above the hero section
+    height: 150px;
+  }
+
+.hero-section {
+  position: relative; // Relative for absolute children positioning
+  width: 100%; // Full width
+  height: 100vh; // Adjusted to viewport height
+  overflow: hidden; // Clips off any content going outside the bounds
+  margin-top: -1rem; // Negative margin can pull up the section under the fixed header if needed
 }
 
 .header-video {
   position: absolute;
   top: 0;
   left: 0;
-  width: 100%;
-  height: 100%;
-  object-fit: cover; // Ensures the video covers the area without being stretched
+  width: 100%; // Full width
+  height: 100%; // Full height of the hero-section
+  object-fit: cover; // Covers the area without stretching
   z-index: -1; // Ensures the video stays in the background
 }
 
+.logo img {
+  position: absolute;
+  top: 50%; // Center vertically
+  left: 50%; // Center horizontally
+  transform: translate(-50%, -50%); // Adjusts for the dimensions of the logo itself
+  z-index: 2; // Above the video
+}
 
-
-.nav {
-  align-self: flex-end; // Align nav to the right
-  position: absolute; // Positioning nav absolutely to place the burger menu
-  top: 1rem; // Padding from the top, adjust as needed
-  right: 1rem; // Padding from the right, adjust as needed
+.hero-text {
+  position: absolute;
+  top: 70%; // Position the hero text below the logo
+  left: 50%;
+  transform: translateX(-50%);
+  text-align: center; // Centers the text within its container
+  z-index: 2;
 }
 
 .custom-icon-size {
-  font-size: 40px; // Change the value as needed
+  font-size: 40px;
+  padding-top: 60px;
+  padding-right: 40px;
+  margin-top: 60px;
 }
 
 ul {
@@ -69,54 +115,47 @@ a {
 }
 
 ul a:hover {
-  color: partials.$primary-color;
-}
-
-.mobile-nav {
-  .bars {
-    display: none;
-    cursor: pointer;
-  }
-}
-
-.text {
-  // Ensure that text has a higher z-index than the video
-  position: relative;
-  z-index: 3;
-  color: partials.$text-color;
+  color: partials.$secondary-color;
 }
 
 .navToggle {
   position: absolute;
-  right: 20px; // Adjust this value as needed for spacing from the right edge
-  top: 20px; // Adjust this value as needed for spacing from the top
-  cursor: pointer; // Optional: Changes the cursor on hover to indicate it's clickable
-  z-index: 100; // Ensure the toggle is above other content
+  right: 20px;
+  top: 20px;
+  cursor: pointer;
 }
 
 #navMenu {
-  display: none; // Hide the menu by default
+  display: none;
 }
 
 #navMenu.active {
-  display: block; // Show the menu when active
+  display: block;
   position: absolute;
-  right: 0; // Align the menu to the right edge of the nav
-  top: 60px; // Position the menu below the toggle icon
-  background-color: #fff; // Add a background color for visibility
-  border: 1px solid #ccc; // Optional border for styling
-  width: 200px; // Set a width for the menu
-  z-index: 99; // Ensure the menu is below the toggle to keep it clickable
+  right: 0;
+  top: 60px;
+  background-color: #fff;
+  border: 1px solid #ccc;
+  width: 200px;
 }
-
-// Responsive adjustments or other styles can be added here
-
-@media (min-width: 768px) {
-  .logo img {
-    width: 30%; // Smaller width on smaller screens
+// Main
+main {
+    padding-top: 80vh; // Pushes the main content down by the height of the hero section
   }
 
-  #navMenu {
-    display: block !important;
+.waitress_helping_guests img {
+    position: relative;
+    align-items: center;
+}
+// Responsive adjustments
+@media (min-width: 768px) {
+  .logo img {
+    width: 30%;
+  }
+}
+// larger screens
+@media (min-width: 1024px) {
+  .logo img {
+    width: 15%; // Adjust the percentage as needed for larger displays
   }
 }

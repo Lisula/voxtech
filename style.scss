@@ -196,6 +196,89 @@ main {
   line-height: 1.6; /* Space between lines */
 }
 
+.main-video{
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%; // Full width
+  height: 30%; // Full height of the hero-section
+}
+
+/*Footer styles*/
+
+footer {
+  background-color: black; /* Or any color you prefer */
+  color: white; /* Adjust text color as needed */
+  text-align: center; /* Center content */
+  padding: 20px 0; /* Padding around the content */
+}
+
+.footer-content {
+  @include partials.flex($justify: center, $align: center);
+  flex-direction: column; /* Stack children vertically */
+}
+
+.logo-footer img {
+  width: 50%; /* Adjust to your preference */
+  margin-bottom: 20px; /* Space below the logo */
+}
+
+.contact-info {
+  border: 1px solid white; /* White border around contact info */
+  padding: 15px;
+  margin-bottom: 20px; /* Space below the contact info box */
+}
+
+.contact-button {
+  @include partials.btn; /* Use your button mixin */
+  display: block; /* Block level element */
+  margin: 10px auto; /* Center button horizontally */
+  text-decoration: none; /* Remove underline from links */
+  color: white; /* Text color for the button */
+  background-color: #5B17ff; /* Button background color */
+}
+
+.social-links a {
+  display: inline-block; /* Inline block for link alignment */
+  margin: 0 5px; /* Margin around social icons */
+}
+
+.social-links img {
+  width: 24px; /* Adjust based on your icon size */
+  height: auto; /* Maintain aspect ratio */
+}
+
+
+.footer-social-media  {
+    display: block;
+    text-align: center;
+    margin-top: 10px;
+}
+ 
+.social-media-icons li {
+    display: inline-block;
+    margin-left: 10px;
+}
+ 
+.social-media-icons i {
+    color: white; 
+    font-size: 30px; 
+    transition: color 0.3s ease; 
+}
+
+.social-media-icons .fa-facebook-f:hover {
+    color: #4267B2; 
+}
+
+.social-media-icons .fa-linkedin-in:hover {
+    color: #0077b5; 
+}
+
+.social-media-icons .fa-instagram:hover {
+    color: #C13584; 
+}
+
+
 /* Add responsiveness to the button for larger screens */
 @media (min-width: 768px) {
   .talk-button {

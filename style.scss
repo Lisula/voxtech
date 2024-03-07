@@ -1,17 +1,8 @@
 // Define variables for colors, font-families, etc.
-@import '_partials';
-
-// Mixin for centering content
-@mixin center-content {
-  position: absolute;
-  top: 50%;
-  left: 50%;
-  transform: translate(-50%, -50%);
-  z-index: 10;
-}
+@use '_partials';
 
 // Basic styles
-body, html {
+body {
   height: 100%;
   margin: 0;
   font-family: $font-family;
@@ -28,13 +19,21 @@ body, html {
         font-weight: 600;
         color: partials.$text-color;
     }
-}
 
-header {
+
+    header {
+    grid-column: 1/6; /*grid column start og slut på en linje i stedet for to*/
+    @include partials.flex($justify: space-between);
+    background-color: partials.$nav-color;
     position: relative;
     overflow: hidden; // Ensures the video doesn't overflow the header bounds
     height: 100vh; // Set the desired height for your header
-  
+    display: flex; // Use flexbox for positioning
+    flex-direction: column; // Stack children vertically
+    align-items: center; // Center-align children
+    position: relative; // Relative positioning for absolute children
+    padding: 1rem; // Header padding
+    }
     .header-video {
       position: absolute;
       top: 0;
@@ -44,53 +43,107 @@ header {
       object-fit: cover; // Ensures the video covers the area without being stretched
       z-index: -1; // Ensures the video stays in the background
     }
-  
+    
+    .overlay {
+        .logo {
+          width: 50%; // Example of a relative width
+          height: auto;
+          text-align: center;
+        }
 
-    nav {
-        position: relative;
-        z-index: 10;
-        width: 100%; // Ensure the nav covers the full width
+    .nav {
+        align-self: flex-end; // Align nav to the right
+        position: absolute; // Positioning nav absolutely to place the burger menu
+        top: 1rem; // Padding from the top, adjust as needed
+        right: 1rem; // Padding from the right, adjust as needed
+      }
+
+    img {
+        width: 70px;
     }
     
+    ul {
+        @include partials.flex;
+        list-style-type: none;
+    }
+
+    a {
+        color: partials.$text-color;
+        padding: partials.$padding;
+        margin: partials.$padding;
+        font-size: 20px;
+        font-weight: bold;
+        text-decoration: none;
+    }
+    
+    ul a:hover{
+       color: partials.$primary-color;
+    }
+}
+
+.mobile-nav {
+
+    .bars{
+        display: none;
+        cursor: pointer;
+    }
+}
+
+    
+      .text {
+        // Ensure that text has a higher z-index than the video
+        position: relative;
+        z-index: 10;
+        color: partials.$text-color;
+      }
+    }
+
     .navToggle {
-        position: right;
+        position: absolute;
         right: 20px; // Adjust this value as needed for spacing from the right edge
         top: 20px; // Adjust this value as needed for spacing from the top
         cursor: pointer; // Optional: Changes the cursor on hover to indicate it's clickable
-        margin-right: 20px;
-    }
+        z-index: 100; // Ensure the toggle is above other content
+}
+
+#navMenu {
+    display: none; // Hide the menu by default
+    // Additional styles for positioning and displaying the menu when toggled can be added here
+}
+
+#navMenu.active {
+    display: block; // Show the menu when active
+    position: absolute;
+    right: 0; // Align the menu to the right edge of the nav
+    top: 60px; // Position the menu below the toggle icon
+    background-color: #fff; // Add a background color for visibility
+    border: 1px solid #ccc; // Optional border for styling
+    width: 200px; // Set a width for the menu
+    z-index: 99; // Ensure the menu is below the toggle to keep it clickable
+}
+    .logo img {
+        max-width: 100%;
+        height: auto;
+        width: 200px; // Adjust the logo size as needed
+        // Centering the logo image
+        display: block; // Change display to block to center the image
+        margin: 0
     
 
-    @media (min-width: 768px) {
-        #navMenu {
-            display: block !important;
-        }
-    }
-    .overlay {
-        .logo img {
-          width: 50%; // Example of a relative width
-          height: auto;
-        }
+  
       
         // Optionally, you can use media queries for more control on different screen sizes
-        @media (max-width: 768px) {
-          .logo img {
-            width: 30%; // Smaller width on smaller screens
+        @media (min-width: 768px) {
+            .logo img {
+              width: 30%; // Smaller width on smaller screens
+            }
+          
+            #navMenu {
+              display: block !important;
+            }
           }
-        }
       
-        .text {
-          color: white;
-        }
-      }
-    
-      
-    .header-content {
-      position: relative;
-      z-index: 10;
-      // Add your styling for header content here
-    }
-  }
+ 
   
 
 // Responsive adjustments or other styles can be added here

@@ -1,6 +1,6 @@
 /*Variabler*/
 $bg-color: black; 
-$nav-color: #ffffff;
+$nav-color: black;
 $footer-color:black;
 $primary-color:black;
 $secondary-color: #5B17ff;
@@ -14,6 +14,15 @@ $font: 'montserrat', Tahoma, Geneva, Verdana, sans-serif;
     justify-content: $justify;
     align-items: $align;
 }
+
+// Mixin for centering content
+@mixin center-content {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    z-index: 10;
+  }
 
 @mixin btn($bg-color: $primary-color, $btn-padding: 0.8em 1em){
     background-color: $bg-color;

@@ -196,12 +196,22 @@ main {
   line-height: 1.6; /* Space between lines */
 }
 
-.main-video{
+.video-container {
+  position: relative;
+  width: 100%; /* Adjust this as needed */
+  /* Use padding-top to create a specific aspect ratio; 
+     This example creates a 16:9 aspect ratio. The percentage is calculated by (9 / 16 * 100%) */
+  padding-top: 56.25%; 
+  overflow: hidden;
+}
+
+.main-video {
   position: absolute;
   top: 0;
   left: 0;
-  width: 100%; // Full width
-  height: 30%; // Full height of the hero-section
+  width: 100%;
+  height: 100%;
+  object-fit: cover; /* This will cover the area of the container without stretching */
 }
 
 /*Footer styles*/

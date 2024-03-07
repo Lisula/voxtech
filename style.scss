@@ -140,13 +140,70 @@ ul a:hover {
 }
 // Main
 main {
-    padding-top: 80vh; // Pushes the main content down by the height of the hero section
+    padding-top: 60vh; // Pushes the main content down by the height of the hero section
   }
 
 .waitress_helping_guests img {
     position: relative;
     align-items: center;
 }
+
+.services-section {
+  background-color: #232323; /* Dark background */
+  color: partials.$text-color;
+  padding: 20px;
+  text-align: center; /* Center all text */
+}
+
+.services-section h2,
+.contribution-section h2 {
+  margin-bottom: 10px; /* Space below the headers */
+}
+
+.services-section hr {
+  border: 1px solid #ffffff; /* White horizontal line */
+  margin-bottom: 20px; /* Space below the line */
+}
+
+.services-list {
+  list-style-type: none; /* Remove bullet points */
+  padding: 0; /* Remove default padding */
+  margin-bottom: 30px; /* Space below the list */
+}
+
+.services-list li {
+  margin-bottom: 5px; /* Space between list items */
+}
+
+.talk-button {
+  background-color:$secondary-color;
+  color: partials.$text-color;
+  border: none; /* Remove border */
+  padding: 10px 20px; /* Padding inside the button */
+  border-radius: 20px; /* Rounded corners */
+  cursor: pointer; /* Hand cursor on hover */
+  
+}
+
+.contribution-section {
+  background-color: #2a2a2a; /* Slightly lighter dark background */
+  color: partials.$text-color;
+  padding: 20px;
+  text-align: center; /* Center all text */
+}
+
+.contribution-section p {
+  line-height: 1.6; /* Space between lines */
+}
+
+/* Add responsiveness to the button for larger screens */
+@media (min-width: 768px) {
+  .talk-button {
+    padding: 15px 30px; /* Larger padding */
+    font-size: larger; /* Bigger font size */
+  }
+}
+
 // Responsive adjustments
 @media (min-width: 768px) {
   .logo img {

@@ -1,12 +1,12 @@
 /*Variabler*/
-$bg-color: #F0F0F0; 
+$bg-color: black; 
 $nav-color: #ffffff;
-$footer-color: #0A1F1C;
-$primary-color: #3A8479;
-$secondary-color: #133833;
-$text-color: #484848;
+$footer-color:black;
+$primary-color:black;
+$secondary-color: #5B17ff;
+$text-color: white;
 $padding: 0.5em;
-$font: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+$font: 'montserrat', Tahoma, Geneva, Verdana, sans-serif;
 
 /*Mixin*/
 @mixin flex($justify: center, $align: center){

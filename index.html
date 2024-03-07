@@ -2,13 +2,52 @@
 <html lang="da">
 <head>
     <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Document</title>
+    <title>VOXtech multimedia design</title>
+    <link rel="stylesheet" href="style.css">
+    <script src="https://kit.fontawesome.com/1f99888007.js" crossorigin="anonymous"></script>
 </head>
 <body>
-    <header><nav> <li></li>
-    </nav></header>
-    <main><p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Autem velit maiores soluta perspiciatis, nemo, harum beatae quidem magnam ducimus, officia nesciunt expedita voluptatibus odio libero commodi unde quia? Similique, adipisci!</p></main>
+<!--Navigation-->
+    <header>
+    <!--Burger menu-->
+    <nav class="mobile-nav">
+        <a href="index.html"><img src="img/logo-gron.png" alt="logo af en pentagon"></a>
+        <i class="navToggle bars fa-solid fa-utensils" style="color: #ffffff;"></i>
+    </nav>
+    <nav class="desktop-nav">
+        <!--Desktop navigation-->
+        <ul>
+            <li><a class="active" href="#">Our work</a></li>
+            <li><a href="#">Services</a></li>
+            <li><a href="#">About</a></li>
+            <li><a href="#">Contact</a></li>
+        </ul>
+
+        <div class="header-container">
+            <video autoplay loop muted class="video-bg">
+              <source src="peoplewithcomputer.mp4" type="video/mp4">
+            </video>
+            <div class="logo"><img src="voxtech_logo9WHITE.png" alt="VOXtech logo"></div>
+            <div class="text">
+              Crafting brands globally with<br>
+              Creativity.<br>
+              Purpose.<br>
+              Empathy.
+            </div>
+          </div>
+
+    </header>
+    <main></main>
     <footer></footer>
+    <!--Gør kniv og gaffel menu aktiv-->
+    <script>
+        const navbarToggle = () => {
+        const nav = document.querySelector('.desktop-nav');
+        nav.classList.toggle('toggleShow');
+        }
+        document.querySelector('.navToggle').addEventListener('click', navbarToggle);
+    </script>
 </body>
 </html>

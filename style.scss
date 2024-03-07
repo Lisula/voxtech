@@ -1,0 +1,54 @@
+// Define variables for colors, font-families, etc.
+$bg-color: white;
+$font-family;
+$text-color: white;
+
+// Mixin for centering content
+@mixin center-content {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  z-index: 10;
+}
+
+// Basic styles
+body, html {
+  height: 100%;
+  margin: 0;
+  font-family: $font-family;
+}
+
+.header-container {
+  position: relative;
+  text-align: center;
+  color: $text-color;
+  overflow: hidden;
+  height: 100vh; // Full viewport height
+
+  .video-bg {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    min-width: 100%;
+    min-height: 100%;
+    width: auto;
+    height: auto;
+    z-index: -100;
+    transform: translate(-50%, -50%);
+  }
+
+  .logo {
+    @include center-content;
+    top: 30%; // Adjust top positioning for logo
+    font-size: 50px;
+  }
+
+  .text {
+    @include center-content;
+    top: 60%; // Adjust top positioning for text
+    font-size: 25px;
+  }
+}
+
+// Responsive adjustments or other styles can be added here

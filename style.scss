@@ -1,311 +1,235 @@
 @use 'partials';
 
-
 // Basic styles
 body {
     margin: 0;
     padding: 0;
     font-family: partials.$font;
-    background-color: partials.$bg-color; // Define a fallback color if necessary
-    box-sizing: border-box; // Ensures padding and borders are included in the total width and height
-  }
+    background-color: partials.$bg-color;
+    box-sizing: border-box;
+}
 
 *,
 *::before,
 *::after {
-  box-sizing: inherit; // Inherit box-sizing from body
+    box-sizing: inherit;
 }
 
-// Basic styles for p
+// Text styles
 p {
     font-size: 16px;
     color: partials.$text-color;
     line-height: 1.5;
     text-align: center;
-  }
-  
-  // Basic styles for heading elements
+}
 
-  h1 {
+h1, h2, h4, h5, h6 {
+    color: partials.$text-color;
+    text-align: center;
+}
+
+h1 {
     font-size: 36px;
-    color: partials.$text-color;
-  }
-   h2 {
-    font-size: 24px;
-    color: partials.$text-color;
-    text-align: center;
-  }
+}
 
-  h4, h5, h6 {
+h2 {
     font-size: 24px;
-    color: partials.$text-color;
-  }
-  
-  // Specific style for h3 within the main section
-  h3{
-    font-weight: 22px;
+}
+
+h3 {
+    font-size: 22px;
     color: partials.$secondary-color;
-    text-align: center;
-  }
+}
 
+h4, h5, h6 {
+    font-size: 24px;
+}
 
-  header {
+// Header
+header {
+    @include partials.flex(space-between);
     background-color: partials.$nav-color;
     padding: 1rem;
-    position: fixed; // Fixed header stays at the top
-    width: 100%; // Full width
-    z-index: 5; // Above the hero section
+    position: fixed;
+    width: 100%;
+    z-index: 1000; // Increase z-index to ensure header stays above all other content
     height: 150px;
-  }
+    top: 0;
+}
 
+// Hero section
 .hero-section {
-  position: relative; // Relative for absolute children positioning
-  width: 100%; // Full width
-  height: 100vh; // Adjusted to viewport height
-  overflow: hidden; // Clips off any content going outside the bounds
-  margin-top: -1rem; // Negative margin can pull up the section under the fixed header if needed
+    position: relative;
+    width: 100%;
+    height: calc(100vh - 150px); // Adjust the hero section height to account for the header height
+    overflow: hidden;
 }
 
 .header-video {
-  position: absolute;
-  top: 0;
-  left: 0;
-  width: 100%; // Full width
-  height: 100%; // Full height of the hero-section
-  object-fit: cover; // Covers the area without stretching
-  z-index: -1; // Ensures the video stays in the background
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    z-index: -1;
 }
 
 .logo img {
-  position: absolute;
-  top: 50%; // Center vertically
-  left: 50%; // Center horizontally
-  transform: translate(-50%, -50%); // Adjusts for the dimensions of the logo itself
-  z-index: 2; // Above the video
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    z-index: 2;
+    padding-bottom: 40px;
 }
 
 .hero-text {
-  position: absolute;
-  top: 70%; // Position the hero text below the logo
-  left: 50%;
-  transform: translateX(-50%);
-  text-align: center; // Centers the text within its container
-  z-index: 2;
+    position: absolute;
+    top: 70%;
+    left: 50%;
+    transform: translateX(-50%);
+    z-index: 2;
 }
 
-.custom-icon-size {
-  font-size: 40px;
-  padding-top: 60px;
-  padding-right: 40px;
-  margin-top: 60px;
+// Navigation and links
+.navToggle {
+    position: absolute;
+    right: 20px;
+    top: 20px;
+    cursor: pointer;
 }
 
 ul {
-  @include partials.flex;
-  list-style-type: none;
+    @include partials.flex;
+    list-style-type: none;
 }
 
 a {
-  color: partials.$text-color;
-  padding: partials.$padding;
-  margin: partials.$padding;
-  font-size: 20px;
-  font-weight: bold;
-  text-decoration: none;
+    color: partials.$text-color;
+    padding: partials.$padding;
+    margin: partials.$padding;
+    font-size: 20px;
+    font-weight: bold;
+    text-decoration: none;
 }
 
 ul a:hover {
-  color: partials.$secondary-color;
+    color: partials.$secondary-color;
 }
 
-.navToggle {
-  position: absolute;
-  right: 20px;
-  top: 20px;
-  cursor: pointer;
-}
-
-#navMenu {
-  display: none;
-}
-
-#navMenu.active {
-  display: block;
-  position: absolute;
-  right: 0;
-  top: 60px;
-  background-color: #fff;
-  border: 1px solid #ccc;
-  width: 200px;
-}
-// Main
+// Main content adjustments
 main {
-    padding-top: 60vh; // Pushes the main content down by the height of the hero section
-  }
-
-.waitress_helping_guests img {
-    position: relative;
-    align-items: center;
+    padding-top: 150px; // Ensure the top padding is at least as high as the header to prevent overlap
 }
 
-.services-section {
-  background-color: #232323; /* Dark background */
-  color: partials.$text-color;
-  padding: 20px;
-  text-align: center; /* Center all text */
-}
-
-.services-section h2,
-.contribution-section h2 {
-  margin-bottom: 10px; /* Space below the headers */
-}
-
-.services-section hr {
-  border: 1px solid #ffffff; /* White horizontal line */
-  margin-bottom: 20px; /* Space below the line */
+.services-section, .contribution-section {
+    background-color: #232323;
+    color: partials.$text-color;
+    padding: 20px;
+    text-align: center;
 }
 
 .services-list {
-  list-style-type: none; /* Remove bullet points */
-  padding: 0; /* Remove default padding */
-  margin-bottom: 30px; /* Space below the list */
+    list-style-type: none;
+    padding: 0;
+    margin: 0;
 }
 
 .services-list li {
-  margin-bottom: 5px; /* Space between list items */
+    margin-bottom: 10px;
 }
 
-.talk-button {
-  background-color:$secondary-color;
-  color: partials.$text-color;
-  border: none; /* Remove border */
-  padding: 10px 20px; /* Padding inside the button */
-  border-radius: 20px; /* Rounded corners */
-  cursor: pointer; /* Hand cursor on hover */
-  
+.talk-button, .contact-button {
+    @include partials.btn(partials.$secondary-color);
+    margin: 20px auto;
+    display: block;
+    color: white;
 }
 
-.contribution-section {
-  background-color: #2a2a2a; /* Slightly lighter dark background */
-  color: partials.$text-color;
-  padding: 20px;
-  text-align: center; /* Center all text */
-}
-
-.contribution-section p {
-  line-height: 1.6; /* Space between lines */
-}
-
-.video-container {
-  position: relative;
-  width: 100%; /* Adjust this as needed */
-  /* Use padding-top to create a specific aspect ratio; 
-     This example creates a 16:9 aspect ratio. The percentage is calculated by (9 / 16 * 100%) */
-  padding-top: 56.25%; 
-  overflow: hidden;
-}
-
-.main-video {
-  position: absolute;
-  top: 0;
-  left: 0;
-  width: 100%;
-  height: 100%;
-  object-fit: cover; /* This will cover the area of the container without stretching */
-}
-
-/*Footer styles*/
-
+// Footer styles
 footer {
-  background-color: black; /* Or any color you prefer */
-  color: white; /* Adjust text color as needed */
-  text-align: center; /* Center content */
-  padding: 20px 0; /* Padding around the content */
+    background-color: partials.$footer-color;
+    color: white;
+    text-align: center;
+    padding: 20px 0;
+    position: relative; // Ensure that the footer is not absolutely positioned
+    z-index: 1; // Lower z-index to keep it below the main content
+    height: 300px;
 }
 
 .footer-content {
-  @include partials.flex($justify: center, $align: center);
-  flex-direction: column; /* Stack children vertically */
-}
-
-.logo-footer img {
-  width: 50%; /* Adjust to your preference */
-  margin-bottom: 20px; /* Space below the logo */
+  @include partials.flex(center, center);
+  flex-direction: column;
+  text-align: center; // This ensures that the text inside the flex container is centered
+  width: 100%; // Make sure the container spans the full width
 }
 
 .contact-info {
-  border: 1px solid white; /* White border around contact info */
-  padding: 15px;
-  margin-bottom: 20px; /* Space below the contact info box */
+  width: 100%; // Ensure these take the full width of their container
+  margin-bottom: 20px; // Provide some space between them
+  display: flex;
+  flex-direction: column;
+  align-items: center; // This will center the children horizontally in the flex container
+  justify-content: center; // This will center the children vertically in the flex container
+}
+
+.logo-footer {
+  width: 100%; // Ensure these take the full width of their container
+  margin-bottom: 20px; // Provide some space between them
+  display: flex;
+  flex-direction: column;
+  align-items: center; // This will center the children horizontally in the flex container
+  justify-content: center; // This will center the children vertically in the flex container
+  padding-left: 40px;
 }
 
 .contact-button {
-  @include partials.btn; /* Use your button mixin */
-  display: block; /* Block level element */
-  margin: 10px auto; /* Center button horizontally */
-  text-decoration: none; /* Remove underline from links */
-  color: white; /* Text color for the button */
-  background-color: #5B17ff; /* Button background color */
+  padding: 10px 20px;
+  background-color: partials.$secondary-color;
+  color: white;
+  border: none;
+  border-radius: 20px;
+  margin: 10px auto; // This ensures the button is centered within the footer
+  display: block;
+  text-align: center; // Ensure the text inside the button is centered
+  cursor: pointer;
+  text-decoration: none;
+  // Add width or max-width if necessary, for example:
+  // width: 50%;
+  // max-width: 200px;
 }
 
-.social-links a {
-  display: inline-block; /* Inline block for link alignment */
-  margin: 0 5px; /* Margin around social icons */
-}
-
-.social-links img {
-  width: 24px; /* Adjust based on your icon size */
-  height: auto; /* Maintain aspect ratio */
-}
-
-
-.footer-social-media  {
-    display: block;
-    text-align: center;
-    margin-top: 10px;
-}
- 
 .social-media-icons li {
     display: inline-block;
-    margin-left: 10px;
+    margin: 0 10px;
 }
- 
+
 .social-media-icons i {
-    color: white; 
-    font-size: 30px; 
-    transition: color 0.3s ease; 
+    color: white;
+    font-size: 30px;
+    transition: color 0.3s ease;
+    text-align: center;
 }
 
-.social-media-icons .fa-facebook-f:hover {
-    color: #4267B2; 
-}
-
-.social-media-icons .fa-linkedin-in:hover {
-    color: #0077b5; 
-}
-
-.social-media-icons .fa-instagram:hover {
-    color: #C13584; 
-}
-
-
-/* Add responsiveness to the button for larger screens */
-@media (min-width: 768px) {
-  .talk-button {
-    padding: 15px 30px; /* Larger padding */
-    font-size: larger; /* Bigger font size */
-  }
-}
+// Hover effects for social icons
+.social-media-icons .fa-facebook-f:hover { color: #4267B2; }
+.social-media-icons .fa-linkedin-in:hover { color: #0077b5; }
+.social-media-icons .fa-instagram:hover { color: #C13584; }
 
 // Responsive adjustments
 @media (min-width: 768px) {
-  .logo img {
-    width: 30%;
-  }
+    .talk-button, .contact-button {
+        padding: 15px 30px;
+        font-size: larger;
+    }
+    .logo img {
+        width: 20%;
+    }
 }
-// larger screens
+
 @media (min-width: 1024px) {
-  .logo img {
-    width: 15%; // Adjust the percentage as needed for larger displays
-  }
+    .logo img {
+        width: 15%;
+    }
 }

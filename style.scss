@@ -252,3 +252,36 @@ footer {
         width: 15%;
     }
 }
+
+@media (max-width: 768px) {
+    header {
+      // Adjust styles for mobile header
+    }
+  
+    .hero-section {
+      // Adjust styles for mobile hero section
+      height: auto; // You might want a smaller height on mobile
+    }
+  
+    .main-video {
+      // Adjust styles for mobile video
+      height: auto; // Maintain aspect ratio
+    }
+  
+    .services-section,
+    .contribution-section {
+      // Adjust padding or font sizes for mobile sections
+      padding: 10px; // Smaller padding on mobile
+    }
+  
+    .services-list {
+      flex-direction: column; // Stack items on mobile
+    }
+  
+    .talk-button,
+    .contact-button {
+      // Adjust button sizes for mobile
+      padding: 10px; // Smaller buttons on mobile
+    }
+  
+  }

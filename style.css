@@ -28,19 +28,23 @@ h1, h2, h4, h5, h6 {
 
 h1 {
   font-size: 36px;
+  text-align: center;
 }
 
 h2 {
   font-size: 24px;
+  text-align: center;
 }
 
 h3 {
   font-size: 22px;
   color: #5B17ff;
+  text-align: center;
 }
 
 h4, h5, h6 {
   font-size: 24px;
+  text-align: center;
 }
 
 header {
@@ -80,6 +84,7 @@ header {
   left: 50%;
   transform: translate(-50%, -50%);
   z-index: 2;
+  padding-bottom: 70px;
 }
 
 .hero-text {
@@ -119,6 +124,12 @@ ul a:hover {
 
 main {
   padding-top: 150px;
+}
+
+.waitress_helping_guests img {
+  display: flex;
+  justify-content: center;
+  padding-bottom: 70px;
 }
 
 .services-section {

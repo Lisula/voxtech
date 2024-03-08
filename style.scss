@@ -30,19 +30,23 @@ h1, h2, h4, h5, h6 {
 
 h1 {
     font-size: 36px;
+    text-align: center;
 }
 
 h2 {
     font-size: 24px;
+    text-align: center;  
 }
 
 h3 {
     font-size: 22px;
     color: partials.$secondary-color;
+    text-align: center;
 }
 
 h4, h5, h6 {
     font-size: 24px;
+    text-align: center;
 }
 
 // Header
@@ -81,6 +85,7 @@ header {
     left: 50%;
     transform: translate(-50%, -50%);
     z-index: 2;
+    padding-bottom: 70px;
 }
 
 .hero-text {
@@ -120,6 +125,12 @@ ul a:hover {
 // Main content adjustments
 main {
     padding-top: 150px; // Compensate for fixed header
+}
+
+.waitress_helping_guests img {
+  display: flex; // Establishes a flex container
+  justify-content: center; // Centers children along the main axis (horizontally for a row direction)
+  padding-bottom: 70px; // Keeps the padding at the bottom as you specified
 }
 
 .services-section {

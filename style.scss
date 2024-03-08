@@ -52,7 +52,7 @@ header {
     padding: 1rem;
     position: fixed;
     width: 100%;
-    z-index: 1000; // Increase z-index to ensure header stays above all other content
+    z-index: 1000; // Ensure header stays above all other content
     height: 150px;
     top: 0;
 }
@@ -61,7 +61,7 @@ header {
 .hero-section {
     position: relative;
     width: 100%;
-    height: calc(100vh - 150px); // Adjust the hero section height to account for the header height
+    height: calc(100vh - 150px); // Adjust for header height
     overflow: hidden;
 }
 
@@ -81,7 +81,6 @@ header {
     left: 50%;
     transform: translate(-50%, -50%);
     z-index: 2;
-    padding-bottom: 40px;
 }
 
 .hero-text {
@@ -120,11 +119,11 @@ ul a:hover {
 
 // Main content adjustments
 main {
-    padding-top: 150px; // Ensure the top padding is at least as high as the header to prevent overlap
+    padding-top: 150px; // Compensate for fixed header
 }
 
-.services-section, .contribution-section {
-    background-color: #232323;
+.services-section {
+    background-color: partials.$bg-color;
     color: partials.$text-color;
     padding: 20px;
     text-align: center;
@@ -134,17 +133,29 @@ main {
     list-style-type: none;
     padding: 0;
     margin: 0;
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    gap: 10px;
 }
 
 .services-list li {
     margin-bottom: 10px;
+    flex: 1 1 200px; // Items will flex to fit the container
+    text-align: center;
 }
 
-.talk-button, .contact-button {
+.talk-button {
     @include partials.btn(partials.$secondary-color);
     margin: 20px auto;
     display: block;
     color: white;
+}
+
+.main-video {
+    width: 100%;
+    height: auto; // Make video responsive to the width while maintaining aspect ratio
+    object-fit: cover;
 }
 
 // Footer styles
@@ -153,51 +164,48 @@ footer {
     color: white;
     text-align: center;
     padding: 20px 0;
-    position: relative; // Ensure that the footer is not absolutely positioned
-    z-index: 1; // Lower z-index to keep it below the main content
-    height: 300px;
+    position: relative;
+    z-index: 1;
+    height: auto; // Adjust footer height as needed
 }
 
 .footer-content {
-  @include partials.flex(center, center);
-  flex-direction: column;
-  text-align: center; // This ensures that the text inside the flex container is centered
-  width: 100%; // Make sure the container spans the full width
+    @include partials.flex(center, center);
+    flex-direction: column;
+    text-align: center;
+    width: 100%;
 }
 
 .contact-info {
-  width: 100%; // Ensure these take the full width of their container
-  margin-bottom: 20px; // Provide some space between them
-  display: flex;
-  flex-direction: column;
-  align-items: center; // This will center the children horizontally in the flex container
-  justify-content: center; // This will center the children vertically in the flex container
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    margin-bottom: 20px;
 }
 
 .logo-footer {
-  width: 100%; // Ensure these take the full width of their container
-  margin-bottom: 20px; // Provide some space between them
+  width: 100%;
   display: flex;
   flex-direction: column;
-  align-items: center; // This will center the children horizontally in the flex container
-  justify-content: center; // This will center the children vertically in the flex container
-  padding-left: 40px;
+  align-items: center;
+  justify-content: center;
+  margin-bottom: 20px;
+  padding-left: 45px;
 }
 
 .contact-button {
-  padding: 10px 20px;
-  background-color: partials.$secondary-color;
-  color: white;
-  border: none;
-  border-radius: 20px;
-  margin: 10px auto; // This ensures the button is centered within the footer
-  display: block;
-  text-align: center; // Ensure the text inside the button is centered
-  cursor: pointer;
-  text-decoration: none;
-  // Add width or max-width if necessary, for example:
-  // width: 50%;
-  // max-width: 200px;
+    padding: 10px 20px;
+    background-color: partials.$secondary-color;
+    color: white;
+    border: none;
+    border-radius: 20px;
+    margin: 10px auto;
+    display: block;
+    text-align: center;
+    cursor: pointer;
+    text-decoration: none;
 }
 
 .social-media-icons li {
